@@ -16,7 +16,6 @@ class App(Tk):
         self.label=ttk.Label(self,text='Salut!')
         self.label.pack()
         self.text=Text(self,height=1)
-        #self.text.insert(tkinter.END,'\n')
         self.text.pack(side=tkinter.LEFT)
         self.button=ttk.Button(self,text='Choose',command=self.button_clicked)
         self.button.pack()
