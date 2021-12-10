@@ -48,9 +48,9 @@ class App:
 
     def check_string(self,text):
         buff=text.split('|')
-        if(buff[0]=='START'):
+        if(buff[0]=='Begin'):
             self.receiver_text.insert(END, 'A fost primit un pachet de Begin si se primesc ' + buff[1] + ' pachete.\n')
-        if(buff[0]=='STOP'):
+        if(buff[0]=='End'):
             self.receiver_text.insert(END, 'A fost primit un pachet de End si se primesc ' + buff[1] + ' caractere.\n')
 
     def __init__(self):
