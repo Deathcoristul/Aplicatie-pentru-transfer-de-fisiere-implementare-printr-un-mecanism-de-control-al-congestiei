@@ -18,7 +18,7 @@ class Send_ACK(Thread):
 
     def run(self):
         while w.running:
-            print("ACK Send")
+            #print("ACK Send")
             Send_ACK.status.acquire()  # primesc lock
             if len(Send_ACK.ACK_packs) == 0:
                 Send_ACK.status.wait()  # astept cat timp n-am niciun ACK
@@ -87,7 +87,7 @@ class Receive_Data(Thread):
 
     def run(self):
         while w.running:
-            print("Receive_data")
+            #print("Receive_data")
             Receive_Data.status.acquire()  # primesc lock
             if not w.Socket.flag:  # verific daca s-a apasat pe start
                 Receive_Data.status.wait()
@@ -130,7 +130,7 @@ class DataThread(Thread):
 
     def run(self):
         while w.running:
-            print("DataThread")
+            #print("DataThread")
             DataThread.status.acquire()
             if len(Receive_Data.packs) == 0:
                 DataThread.status.wait()  # astept cat timp nu am primit pachete de prelucrat
