@@ -15,7 +15,7 @@ class Send(Thread):
         while w.running:  # se asteapta
             Send.status.acquire()  # primesc lock
             send_packs = []  # coada in care voi insera pachete de trimis
-            print("Send")
+            #print("Send")
             if len(Prelucrare_Thread.packs) == 0 and len(Algoritm_Tahoe.retransmit_packs) == 0:
                 Send.status.wait()  # daca nu exista pachete de trimis cozile din care le pot lua, mai astept
             # trimit din coada de pachete daca este vida coada de retransmisie iar pachetele trimise au primit ack
@@ -81,7 +81,7 @@ class Receive(Thread):
     def run(self):
         cnt = 0  # contor pentru a afla cat timp am de asteptat pana a primi ceva
         while w.running:
-            print("Receive")
+            #print("Receive")
             Receive.status.acquire()  # primesc lock
             if not w.Socket.flag:  # verific daca s-a apasat butonul de start
                 Receive.status.wait()
@@ -147,7 +147,7 @@ class Prelucrare_Thread(Thread):
 
     def run(self):  # supraincarc din threading.Thread
         while w.running:  # astept la infinit pana apare vreo problema
-            print("Prelucrare Thread")
+            #print("Prelucrare Thread")
             Prelucrare_Thread.read_status.acquire()  # primesc lock
             txt = w.App.getTextfromFile(w.App.path)  # prelucrez continutul fisierului
             w.App.packs = w.App.format_packs(txt)  # impartim in pachete
