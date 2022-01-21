@@ -182,7 +182,7 @@ class App:
         self.stop.place(x=121, y=305)
         self.choose = Button(self.interface, text="Caută", bg='white', fg='black', font=('ARIAL BLACK', 12, 'bold'),
                              width=10, height=1,
-                             command=self.open_file)
+                             command=self.open_file,state=DISABLED)
         self.choose.place(x=242, y=305)
 
         self.sender_btt = Button(self.interface, text="Set Sender", bg='grey', fg='black',
@@ -200,6 +200,7 @@ class App:
         else:
             App.status = 1
             App.sender_text.insert(END, 'S-a schimbat pe SENDER.\n')
+            self.choose['state']=NORMAL
 
     def set_receiver(self):
         if App.status == 2:
@@ -207,6 +208,7 @@ class App:
         else:
             App.status = 2
             App.sender_text.insert(END, 'S-a schimbat pe RECEIVER.\n')
+            self.choose['state'] = DISABLED
 
     def start(self):
         global running, started
@@ -215,7 +217,7 @@ class App:
         if App.status == 0:
             messagebox.showinfo('Eroare', 'N-ai setat postul.')
             return
-        if App.path == '':
+        if App.path == '' and App.status == 1:
             messagebox.showinfo('Eroare', 'Nu exista fisier deschis.')
             return
         App.SenderIP = self.ip_sender_text.get()
